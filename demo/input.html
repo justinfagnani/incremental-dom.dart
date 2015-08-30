@@ -1,0 +1,61 @@
+<html>
+<body>
+  <!-- Pretend this was server-side rendered. Due to how diffing works, empty
+       TextNodes throw off the alignment and causes a re-render. As long as
+       your server-side render and client-side render agree, it will work as
+       expected. -->
+  <div id="container"><div><input type="text" value="world"></div><div>Hello <strong>world</strong></div>A string with more than 4 characters</div>
+
+  <p>
+    Incremental DOM can update an existing DOM tree. In this demo, the page 
+    contains the initial DOM. After a simulated delay of 500ms, Incremental
+    DOM performs an initial diff of the subtree.
+  </p>
+
+  <script src="../dist/incremental-dom.js"></script>
+  <script>
+    setTimeout(function() {
+      var patch = IncrementalDOM.patch,
+          elementOpen = IncrementalDOM.elementOpen,
+          elementVoid = IncrementalDOM.elementVoid,
+          elementClose = IncrementalDOM.elementClose,
+          text = IncrementalDOM.text;
+
+      function update(data) {
+        patch(container, function() {
+          var moreThanFourCharacters = data.text.length > 4;
+
+          elementOpen('div', null);
+            elementVoid('input', null, null,
+                'value', 'world', // value is the HTML (initial) value attribute
+                'type', 'text',
+                'oninput', handleInput,
+                'style', {
+                  'background-color': moreThanFourCharacters ? '' : 'rgba(255, 0, 0, 0.1)'
+                });
+          elementClose('div');
+          elementOpen('div', null);
+            text('Hello ');
+            elementOpen('strong', null);
+              text(data.text);
+            elementClose('strong');
+          elementClose('div');
+
+          if (moreThanFourCharacters) {
+            text('A string with more than 4 characters');
+          }
+        });
+      }
+
+      function handleInput(e) {
+        update({
+          text: e.target.value,
+        });
+      }
+
+      // Calling update once to attach oninput
+      update({ text: 'world' });
+    }, 500);
+  </script>
+</body>
+</html>

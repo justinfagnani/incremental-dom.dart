@@ -1,0 +1,7 @@
+name: incremental-dom
+version: 0.1.0
+author: Justin Fagnani <justinfagnani@google.com>
+dependencies:
+  reflectable: any
+dev_dependencies:
+  test: any
