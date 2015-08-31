@@ -64,7 +64,7 @@ bool matches(Node node, String nodeName, String key) {
 Node alignWithDOM(String nodeName, String key, [List statics]) {
   TreeWalker walker = getWalker();
   Node currentNode = walker.currentNode;
-  Element parent = walker.getCurrentParent();
+  Node parent = walker.getCurrentParent();
   Node matchingNode;
 
   // Check to see if we have a node to reuse

@@ -224,7 +224,7 @@ void attr(String name, value) {
  * Closes an open tag started with elementOpenStart.
  * @return {!Element} The corresponding Element.
  */
-Element elementOpenEnd() {
+Element elementOpenEnd([String tag]) {
   // if (process.env.NODE_ENV !== 'production') {
   //   assertInAttributes();
   //   setNotInAttributes();
