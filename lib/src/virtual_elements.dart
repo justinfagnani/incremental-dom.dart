@@ -160,7 +160,9 @@ Element elementOpen(String tag, [String key, List statics, List var_args]) {
     String attr;
     Map newAttrs = data.newAttrs;
 
-    newAttrs.clear();
+    for (attr in newAttrs.keys) {
+      newAttrs[attr] = null;
+    }
 
     for (i = 0; i < var_args.length; i += 2) {
       newAttrs[attrsArr[i]] = attrsArr[i + 1];

@@ -77,7 +77,6 @@ void applyStyle(Element el, String name, style) {
  *     attribute.
  */
 void applyAttributeTyped(Element el, String name, value) {
-  print('applyAttributeTyped value: $value type ${value.runtimeType}');
   if (value is String || value is num || value is bool || value == null) {
     applyAttr(el, name, value);
   } else {

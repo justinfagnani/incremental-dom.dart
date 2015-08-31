@@ -1,7 +1,9 @@
-name: incremental-dom
-version: 0.1.0
+name: incremental_dom
+version: 0.1.0-pre2
 author: Justin Fagnani <justinfagnani@google.com>
+description: A Dart incremental DOM library.
+homepage: https://github.com/justinfagnani/incremental-dom.dart
 dependencies:
-  reflectable: any
+  reflectable: ">=0.1.2 <0.2.0"
 dev_dependencies:
   test: any

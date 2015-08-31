@@ -17,8 +17,8 @@
 
 library incremental_dom;
 
-export './src/patch.dart' show patch;
-export './src/virtual_elements.dart' show
+export 'src/patch.dart' show patch;
+export 'src/virtual_elements.dart' show
   elementVoid,
   elementOpenStart,
   elementOpenEnd,
