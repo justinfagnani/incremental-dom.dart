@@ -125,7 +125,7 @@ void clearUnvisitedDOM(Node node) {
     return;
   }
 
-  while (lastChild != lastVisitedChild) {
+  while (lastChild != null && lastChild != lastVisitedChild) {
     lastChild.remove();
     lastChild = node.lastChild;
   }
@@ -134,7 +134,8 @@ void clearUnvisitedDOM(Node node) {
     // Clean the keyMap, removing any unusued keys.
     var unusedKeys = [];
     for (var key in keyMap.keys) {
-      if (keyMap[key].parentNode == null) {
+      var node = keyMap[key];
+      if (node == null || node.parentNode == null) {
         unusedKeys.add(key);
       }
     }
